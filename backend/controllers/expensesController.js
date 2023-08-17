@@ -1,7 +1,23 @@
-const expense = require("../models/expenseModel");
+const Expense = require("../models/expenseModel");
 
-const createExpense = (req, res) => {
-  res.send("saved");
+const createExpense = async (req, res) => {
+  try {
+    const newExpense = new Expense(req.body);
+    const savedExpense = await newExpense.save();
+    res.status(200).json({
+      status: "Success",
+      message: "Expense was added successful",
+      data: {
+        Expense: savedExpense,
+      },
+    });
+  } catch (err) {
+    console.log(err.message);
+    res.status(400).json({
+      status: "Unsuccess",
+      message: err.message,
+    });
+  }
 };
 
 const updateExpense = (req, res) => {
