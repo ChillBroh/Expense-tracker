@@ -1,11 +1,13 @@
 import "./App.css";
-
-import Expenseshome from "./pages/Expenseshome";
+import { BrowserRouter } from "react-router-dom";
+import RouteExpense from "./routes/RouteExpense";
 
 function App() {
   return (
     <div>
-      <Expenseshome />
+      <BrowserRouter>
+        <RouteExpense />
+      </BrowserRouter>
     </div>
   );
 }
