@@ -3,3 +3,4 @@ const router = express.Router();
 const expenseController = require("../controllers/expensesController");
 
 router.route("/").post(expenseController.createExpense);
+module.exports = router;
