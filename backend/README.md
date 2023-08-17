@@ -15,6 +15,6 @@ Make sure you have the following installed on your machine:
 
 1. [Download and install Node.jsClone this repository to your local machine:](https://github.com/ChillBroh/Expense-tracker.git)
 
-2. Navigate to the project directory: cd frontend
+2. Navigate to the project directory: cd backend
 3. Install the project dependencies : npm install
 4. Run the project : npm start
