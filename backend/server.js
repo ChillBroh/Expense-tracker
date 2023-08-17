@@ -3,14 +3,15 @@ const dotenv = require("dotenv").config();
 const app = express();
 
 //db connection
-// const connectDB = require("./config/db");
-// connectDB();
-app.get("/", (req, res) => {
-  res.send("hello");
-});
+const connectDB = require("./config/db");
+connectDB();
 app.use(express.json());
-app.use(express.urlencoded());
-//define the port number
+app.use(express.urlencoded({ extended: true }));
+
+//route
+const expenseRouter = require("./routes/expenseRouter.js");
+app.use("/api/expenses", expenseRouter);
+
 const port = process.env.PORT || 5000;
 
 //start the server
