@@ -15,7 +15,9 @@ const Expenseshome = () => {
   useEffect(() => {
     const getExpenses = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/expenses");
+        const response = await axios.get(
+          "https://expensestracker-b26826f2938b.herokuapp.com/api/expenses"
+        );
         console.log(response.data);
         setExpenses(response.data);
       } catch (err) {
