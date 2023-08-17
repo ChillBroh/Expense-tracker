@@ -1,5 +1,6 @@
 const Expense = require("../models/expenseModel");
 
+//create a expense
 const createExpense = async (req, res) => {
   try {
     const newExpense = new Expense(req.body);
@@ -24,6 +25,7 @@ const updateExpense = (req, res) => {
   res.send("Updated");
 };
 
+//get all expenses
 const getAllExpenses = async (req, res) => {
   try {
     const allExpenses = await Expense.find();
@@ -37,7 +39,7 @@ const getAllExpenses = async (req, res) => {
   }
 };
 
-//get a specific
+//get a specific Expense
 const getExpense = async (req, res) => {
   try {
     const EID = req.params.id;
@@ -58,8 +60,26 @@ const getExpense = async (req, res) => {
   }
 };
 
-const deleteExpense = (req, res) => {
-  res.send("deleted");
+//delete a expense
+const deleteExpense = async (req, res) => {
+  try {
+    const EID = req.params.id;
+    const deletedExpense = await Expense.findByIdAndDelete(EID);
+
+    res.status(204).json({
+      status: "Success",
+      data: {
+        old: deletedExpense,
+        Expense: "Null",
+      },
+    });
+  } catch (err) {
+    console.log(err.message);
+    res.status(404).json({
+      status: "unsuccess",
+      message: err.message,
+    });
+  }
 };
 
 module.exports = {
