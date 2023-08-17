@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import { Ripple, initTE } from "tw-elements";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { AiTwotoneHome } from "react-icons/ai";
 
 const UpdateExpense = () => {
   const { id } = useParams();
@@ -106,6 +107,11 @@ const UpdateExpense = () => {
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-10 sm:px-4 sm:py-15 lg:max-w-7xl lg:px-8">
+      <Link to={`/`}>
+        <button type="button" data-te-ripple-init data-te-ripple-color="light">
+          <AiTwotoneHome className="text-black hover:text-red-700 text-4xl" />
+        </button>
+      </Link>
       <form>
         <div className="space-y-12">
           <div>
@@ -199,7 +205,6 @@ const UpdateExpense = () => {
                 </label>
                 <div className="mt-2">
                   <input
-                    value={Expenses.Date}
                     type="Date"
                     name="date"
                     id="date"
@@ -220,7 +225,7 @@ const UpdateExpense = () => {
                 </label>
                 <div className="mt-2">
                   <input
-                    value={Expenses.amount}
+                    defaultValue={Expenses.amount}
                     type="number"
                     name="amount"
                     id="amount"

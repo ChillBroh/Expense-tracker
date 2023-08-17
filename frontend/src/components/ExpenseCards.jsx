@@ -2,8 +2,10 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { BsPenFill } from "react-icons/bs";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const ExpenseCards = (props) => {
+  const navigate = useNavigate();
   //delete expense
   const handleDelete = async () => {
     const confirmResult = await Swal.fire({
@@ -20,6 +22,7 @@ const ExpenseCards = (props) => {
       try {
         await axios.delete(`http://localhost:5000/api/expenses/${props.id}`);
         Swal.fire("Expense Deleted!", "", "success");
+        navigate("/add");
       } catch (err) {
         console.log(err);
         Swal.fire(err.message, "", "error");

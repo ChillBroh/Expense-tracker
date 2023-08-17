@@ -11,6 +11,7 @@ const Expenseshome = () => {
   }, []);
 
   const [allExpenses, setExpenses] = useState([]);
+
   useEffect(() => {
     const getExpenses = async () => {
       try {
@@ -42,7 +43,7 @@ const Expenseshome = () => {
         </div>
       </div>
       <div className="mt-20 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
-        {allExpenses?.map((exp) => (
+        {allExpenses.map((exp) => (
           <ExpenseCards
             title={exp.title}
             category={exp.Category}
