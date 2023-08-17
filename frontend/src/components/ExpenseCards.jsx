@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { BsPenFill } from "react-icons/bs";
 import Swal from "sweetalert2";
 
@@ -31,9 +30,18 @@ const ExpenseCards = (props) => {
   return (
     <div className="flex flex-col w-[300px] md:w-[300px] items-left p-10 border shadow-lg m-auto mb-8  rounded-lg bg-white">
       <div className="text-right">
-        <button type="button" data-te-ripple-init data-te-ripple-color="light">
-          <BsPenFill className="text-black hover:text-red-700" />
-        </button>
+        <Link to={`/edit/${props.id}`}>
+          <button
+            type="button"
+            data-te-ripple-init
+            data-te-ripple-color="light"
+          >
+            <BsPenFill className="text-black hover:text-red-700" />
+          </button>
+        </Link>
+      </div>
+      <div className="py-5 ">
+        <p className="">{props.date}</p>
       </div>
       <h1 className="py-2 text-1xl font-bold border-b">
         Spent at : {props.title}

@@ -48,7 +48,7 @@ const Expenseshome = () => {
             category={exp.Category}
             desc={exp.Description}
             amount={exp.amount}
-            date={exp.date}
+            date={exp.Date}
             id={exp._id}
           />
         ))}

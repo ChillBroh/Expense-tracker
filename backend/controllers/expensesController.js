@@ -21,8 +21,26 @@ const createExpense = async (req, res) => {
   }
 };
 
-const updateExpense = (req, res) => {
-  res.send("Updated");
+const updateExpense = async (req, res) => {
+  try {
+    const EID = req.params.id;
+    const updatedExpense = await Expense.findByIdAndUpdate(EID, req.body, {
+      new: true,
+    });
+
+    res.status(200).json({
+      status: "Success",
+      data: {
+        expense: updatedExpense,
+      },
+    });
+  } catch (err) {
+    console.log(err.message);
+    res.status(404).json({
+      status: "unsuccess",
+      message: err.message,
+    });
+  }
 };
 
 //get all expenses
