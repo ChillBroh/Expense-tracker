@@ -24,12 +24,38 @@ const updateExpense = (req, res) => {
   res.send("Updated");
 };
 
-const getAllExpenses = (req, res) => {
-  res.send("all get");
+const getAllExpenses = async (req, res) => {
+  try {
+    const allExpenses = await Expense.find();
+    res.status(200).send(allExpenses);
+  } catch (err) {
+    console.log(err.message);
+    res.status(404).json({
+      status: "unsuccess",
+      message: err.message,
+    });
+  }
 };
 
-const getExpense = (req, res) => {
-  res.send("one get");
+//get a specific
+const getExpense = async (req, res) => {
+  try {
+    const EID = req.params.id;
+
+    const expense = await Expense.findById(EID);
+    res.status(200).json({
+      status: "Success",
+      data: {
+        expense,
+      },
+    });
+  } catch (err) {
+    console.log(err.message);
+    res.status(404).json({
+      status: "unsuccess",
+      message: err.message,
+    });
+  }
 };
 
 const deleteExpense = (req, res) => {
