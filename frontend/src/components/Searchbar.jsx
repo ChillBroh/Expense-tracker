@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 
-const Searchbar = () => {
+const Searchbar = ({ onCategoryChange }) => {
   const [category, setCategory] = useState("");
 
+  // onCategoryChange(category); sends infinite requests
+  const handleCategorySelection = (e) => {
+    const select = e.target.value;
+    setCategory(select);
+
+    onCategoryChange(select);
+  };
   return (
     <div className="bg-white mt-4 lg:mt-[-52px] px-8 shadow-lg max-w-[750px]  p-4 lg:text-left text-center h-full  items-center mx-auto rounded-lg">
       <form className=" px-4">
@@ -13,9 +20,9 @@ const Searchbar = () => {
           <select
             className="p-3 border rounded-md w-full"
             value={category}
-            onChange={(e) => setCategory(e.target.value)}
+            onChange={handleCategorySelection}
           >
-            <option>--Select one--</option>
+            <option value={"ALL"}>ALL</option>
             <option value={"FOOD"}>Food</option>
             <option value={"HOUSE HOLD"}>House Hold</option>
             <option value={"SOCIAL LIFE"}>Social Life</option>

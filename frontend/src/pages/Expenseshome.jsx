@@ -11,6 +11,7 @@ const Expenseshome = () => {
   }, []);
 
   const [allExpenses, setExpenses] = useState([]);
+  const [filterExpenses, setFilter] = useState([]);
 
   useEffect(() => {
     const getExpenses = async () => {
@@ -25,10 +26,23 @@ const Expenseshome = () => {
     getExpenses();
   }, []);
 
+  const handleCategoryChange = (category) => {
+    console.log("Selected category:", category);
+    if (category === "ALL") {
+      setFilter(allExpenses);
+    } else {
+      const select = allExpenses.filter(
+        (expense) => expense.Category === category
+      );
+
+      setFilter(select);
+    }
+  };
+
   return (
     <div className="mx-auto max-w-2xl px-4  sm:px-6  lg:max-w-7xl lg:px-8">
       <div className="pt-48 flex flex-col-2">
-        <Searchbar />
+        <Searchbar onCategoryChange={handleCategoryChange} />
         <div className="text-black">
           <Link to={"/add"}>
             <button
@@ -43,7 +57,7 @@ const Expenseshome = () => {
         </div>
       </div>
       <div className="mt-20 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
-        {allExpenses.map((exp) => (
+        {filterExpenses.map((exp) => (
           <ExpenseCards
             title={exp.title}
             category={exp.Category}
