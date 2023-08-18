@@ -41,7 +41,7 @@ const AddExpense = () => {
 
       if (result.isConfirmed) {
         const response = await axios.post(
-          "https://expensestracker-b26826f2938b.herokuapp.com/api/expenses",
+          "http://localhost:5000/api/expenses",
           {
             title,
             Category,

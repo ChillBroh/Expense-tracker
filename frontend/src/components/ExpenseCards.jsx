@@ -20,9 +20,7 @@ const ExpenseCards = (props) => {
 
     if (confirmResult.isConfirmed) {
       try {
-        await axios.delete(
-          `https://expensestracker-b26826f2938b.herokuapp.com/api/expenses/${props.id}`
-        );
+        await axios.delete(`http://localhost:5000/api/expenses/${props.id}`);
         Swal.fire("Expense Deleted!", "", "success");
         navigate("/add");
       } catch (err) {

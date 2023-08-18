@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const Searchbar = ({ onCategoryChange }) => {
-  const [category, setCategory] = useState("");
+  let [category, setCategory] = useState("");
 
   // onCategoryChange(category); sends infinite requests
   const handleCategorySelection = (e) => {
@@ -22,6 +22,7 @@ const Searchbar = ({ onCategoryChange }) => {
             value={category}
             onChange={handleCategorySelection}
           >
+            <option value={"ALL"}>--select one--</option>
             <option value={"ALL"}>ALL</option>
             <option value={"FOOD"}>Food</option>
             <option value={"HOUSE HOLD"}>House Hold</option>
