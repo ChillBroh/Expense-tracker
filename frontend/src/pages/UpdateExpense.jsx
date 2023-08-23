@@ -31,7 +31,7 @@ const UpdateExpense = () => {
       }
     };
     getExpenses();
-  }, []);
+  }, [id]);
 
   //send data to database
   const handleUpdate = async (e) => {
