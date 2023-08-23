@@ -21,7 +21,6 @@ const createExpense = async (req, res) => {
   }
 };
 
-//update expenses
 const updateExpense = async (req, res) => {
   try {
     const EID = req.params.id;
