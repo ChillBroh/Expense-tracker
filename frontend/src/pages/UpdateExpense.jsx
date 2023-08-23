@@ -71,7 +71,6 @@ const UpdateExpense = () => {
         Swal.fire("Expense adding Cancelled!", "", "error");
       }
     } catch (err) {
-      // using err instead of error1111111111
       Swal.fire({
         icon: "error",
         title: "Oops...",
@@ -96,7 +95,6 @@ const UpdateExpense = () => {
         navigate("/");
       }
     } catch (err) {
-      // using err instead of error
       Swal.fire({
         icon: "error",
         title: "Oops...",
@@ -142,6 +140,7 @@ const UpdateExpense = () => {
                   />
                 </div>
               </div>
+
               {/* select category */}
               <div className="sm:col-span-3">
                 <label
@@ -195,6 +194,7 @@ const UpdateExpense = () => {
                   />
                 </div>
               </div>
+
               {/* add date*/}
               <div className="sm:col-span-3">
                 <label

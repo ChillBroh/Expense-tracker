@@ -14,7 +14,7 @@ const Searchbar = ({ onCategoryChange }) => {
     <div className="bg-white mt-4 lg:mt-[-52px] px-8 shadow-lg max-w-[750px]  p-4 lg:text-left text-center h-full  items-center mx-auto rounded-lg">
       <form className=" px-4">
         <div className="flex">
-          <label for="category" className="py-3 text-lg font-bold pr-10">
+          <label htmlFor="category" className="py-3 text-lg font-bold pr-10">
             Category
           </label>
           <select
