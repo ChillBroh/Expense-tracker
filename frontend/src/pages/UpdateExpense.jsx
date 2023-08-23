@@ -22,7 +22,7 @@ const UpdateExpense = () => {
     const getExpenses = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/expenses/${id}`
+          `https://expensestracker-b26826f2938b.herokuapp.com/api/expenses/${id}`
         );
         console.log(response.data.data.expense.Date);
         setExpenses(response.data.data.expense);
@@ -56,7 +56,7 @@ const UpdateExpense = () => {
 
       if (result.isConfirmed) {
         const response = await axios.put(
-          `http://localhost:5000/api/expenses/${id}`,
+          `https://expensestracker-b26826f2938b.herokuapp.com/api/expenses/${id}`,
           {
             title,
             Category,
